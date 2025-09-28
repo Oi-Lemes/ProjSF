@@ -81,7 +81,7 @@ body {
 
 /* Hero Section */
 .hero {
-    background: linear-gradient(135deg, #f5f5dc, #e6d7b8);
+    background: white;
     color: var(--dark-gray);
     padding: 80px 0;
     text-align: center;
@@ -111,21 +111,17 @@ body {
     font-weight: 700;
     margin-bottom: 20px;
     line-height: 1.2;
-    background: linear-gradient(45deg, var(--primary-blue), var(--primary-green), #ff6b35, #f7941d);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    animation: gradient-shift 3s ease infinite;
+    color: #333;
+}
+
+.number-500 {
+    color: #ff6b35;
+    font-weight: 800;
 }
 
 .bonus-text {
-    background: linear-gradient(45deg, #ff6b35, #f7941d, var(--primary-green));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    color: var(--primary-green);
     font-weight: 800;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
-    animation: pulse-glow 2s ease-in-out infinite alternate;
 }
 
 @keyframes gradient-shift {
@@ -190,14 +186,12 @@ body {
 }
 
 .badge {
-    background: linear-gradient(135deg, rgba(40, 167, 69, 0.9), rgba(34, 139, 34, 0.9));
+    background: var(--primary-green);
     color: white;
     padding: 8px 16px;
     border-radius: 20px;
     font-size: 0.85rem;
     font-weight: 500;
-    backdrop-filter: blur(10px);
-    border: 2px solid rgba(255,255,255,0.3);
     box-shadow: 0 4px 15px rgba(0,0,0,0.1);
     transition: all 0.3s ease;
 }
