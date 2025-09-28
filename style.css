@@ -160,9 +160,9 @@ body {
 
 .badge {
     background: rgba(255,255,255,0.2);
-    padding: 10px 20px;
-    border-radius: 25px;
-    font-size: 0.9rem;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 0.85rem;
     font-weight: 500;
     backdrop-filter: blur(10px);
 }
@@ -581,17 +581,17 @@ section {
 
 .author-stats {
     display: flex;
-    gap: 40px;
-    margin: 30px 0;
+    gap: 25px;
+    margin: 25px 0;
     flex-wrap: wrap;
 }
 
 .stat {
     text-align: center;
-    padding: 20px;
+    padding: 15px 12px;
     background: var(--light-gray);
-    border-radius: 15px;
-    min-width: 120px;
+    border-radius: 12px;
+    min-width: 100px;
     transition: transform 0.3s ease;
 }
 
@@ -919,11 +919,16 @@ section {
     
     .author-stats {
         justify-content: center;
+        flex-wrap: wrap;
+        gap: 20px;
     }
     
     .hero-badges {
-        flex-direction: column;
+        flex-direction: row;
+        justify-content: center;
         align-items: center;
+        flex-wrap: wrap;
+        gap: 15px;
     }
     
     .countdown {
