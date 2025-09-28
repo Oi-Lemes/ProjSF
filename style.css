@@ -655,6 +655,20 @@ section {
     color: var(--primary-blue);
 }
 
+.testimonial-photo {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 3px solid var(--primary-blue);
+    box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+    transition: transform 0.3s ease;
+}
+
+.testimonial-photo:hover {
+    transform: scale(1.1);
+}
+
 .testimonial-author strong {
     display: block;
     color: var(--dark-gray);
@@ -1161,6 +1175,11 @@ section {
         font-size: 0.7rem;
     }
     
+    .testimonial-photo {
+        width: 50px;
+        height: 50px;
+    }
+    
     .urgency-text {
         font-size: 1rem;
     }
@@ -1280,6 +1299,12 @@ section {
     
     .stat span {
         font-size: 0.75rem;
+    }
+    
+    .testimonial-photo {
+        width: 45px;
+        height: 45px;
+        border-width: 2px;
     }
 }
 
