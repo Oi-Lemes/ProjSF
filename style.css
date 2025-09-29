@@ -151,10 +151,8 @@ body {
 
 .video-wrapper {
     position: relative;
-    padding-bottom: 56.25%;
-    height: 0;
     overflow: hidden;
-    max-width: 800px;
+    max-width: 500px;
     margin: 0 auto 40px;
     border-radius: 15px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.2);
