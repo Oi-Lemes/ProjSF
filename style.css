@@ -152,7 +152,7 @@ body {
 .video-wrapper {
     position: relative;
     overflow: hidden;
-    max-width: 500px;
+    max-width: 350px;
     margin: 0 auto 40px;
     border-radius: 15px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.2);
