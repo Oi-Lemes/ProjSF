@@ -1576,8 +1576,8 @@ html {
 
 .notification {
     background: white;
-    padding: 16px 20px;
-    border-radius: 16px;
+    padding: 10px 14px;
+    border-radius: 12px;
     box-shadow: 0 4px 20px rgba(0,0,0,0.15);
     display: flex;
     align-items: flex-start;
@@ -1612,25 +1612,25 @@ html {
     flex: 1;
     display: flex;
     flex-direction: column;
-    gap: 4px;
+    gap: 2px;
 }
 
 .notification-name {
     font-weight: 700;
-    font-size: 1.1rem;
+    font-size: 1rem;
     color: #1a1a1a;
 }
 
 .notification-product {
-    font-size: 0.95rem;
+    font-size: 0.88rem;
     color: #666;
-    line-height: 1.4;
+    line-height: 1.3;
 }
 
 .notification-location {
-    font-size: 0.85rem;
+    font-size: 0.8rem;
     color: #999;
-    line-height: 1.4;
+    line-height: 1.3;
 }
 
 @media (max-width: 768px) {
@@ -1642,7 +1642,7 @@ html {
     }
 
     .notification {
-        padding: 14px 16px;
+        padding: 10px 12px;
     }
 
     .notification-name {
