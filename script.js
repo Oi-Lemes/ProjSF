@@ -425,8 +425,66 @@ function trackEvents() {
     });
 }
 
+// Sistema de Notificações
+const notificationMessages = [
+    { icon: 'fa-shopping-cart', title: 'Nova compra!', message: 'Maria de São Paulo acabou de comprar o Plano Premium' },
+    { icon: 'fa-users', title: 'Atenção!', message: '12 pessoas estão vendo esta página agora' },
+    { icon: 'fa-check-circle', title: 'Compra confirmada!', message: 'João do Rio de Janeiro garantiu o Plano Premium' },
+    { icon: 'fa-fire', title: 'Oferta quente!', message: '5 vagas restantes com desconto especial' },
+    { icon: 'fa-shopping-cart', title: 'Nova compra!', message: 'Ana de Minas Gerais acabou de comprar' },
+    { icon: 'fa-star', title: 'Avaliação!', message: 'Produto avaliado com 5 estrelas por Carla' },
+    { icon: 'fa-users', title: 'Atenção!', message: '8 pessoas estão vendo esta oferta agora' },
+    { icon: 'fa-check-circle', title: 'Compra confirmada!', message: 'Pedro de Brasília garantiu o Plano Premium' },
+    { icon: 'fa-clock', title: 'Tempo limitado!', message: 'Oferta expira em breve, garanta a sua' },
+    { icon: 'fa-shopping-cart', title: 'Nova compra!', message: 'Fernanda de Salvador acabou de comprar' }
+];
+
+let notificationIndex = 0;
+
+function createNotification(notification) {
+    const container = document.getElementById('notification-container');
+    if (!container) return;
+
+    const notificationEl = document.createElement('div');
+    notificationEl.className = 'notification';
+    
+    notificationEl.innerHTML = `
+        <div class="notification-icon">
+            <i class="fas ${notification.icon}"></i>
+        </div>
+        <div class="notification-content">
+            <div class="notification-title">${notification.title}</div>
+            <div class="notification-message">${notification.message}</div>
+        </div>
+    `;
+
+    container.appendChild(notificationEl);
+
+    // Remove a notificação após 5 segundos
+    setTimeout(() => {
+        notificationEl.remove();
+    }, 5000);
+}
+
+function startNotificationSystem() {
+    // Primeira notificação após 2 segundos
+    setTimeout(() => {
+        createNotification(notificationMessages[notificationIndex]);
+        notificationIndex = (notificationIndex + 1) % notificationMessages.length;
+    }, 2000);
+
+    // Notificações subsequentes a cada 8-15 segundos (aleatório)
+    setInterval(() => {
+        createNotification(notificationMessages[notificationIndex]);
+        notificationIndex = (notificationIndex + 1) % notificationMessages.length;
+    }, Math.random() * 7000 + 8000); // Entre 8 e 15 segundos
+}
+
 // Inicializa a aplicação
 initializeApp();
 
 // Inicia o cronômetro dos planos quando a página carrega
 startPlansCountdown();
+
+// Inicia o sistema de notificações
+startNotificationSystem();
