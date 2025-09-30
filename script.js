@@ -427,11 +427,11 @@ function trackEvents() {
 
 // Sistema de Notificações
 const notificationMessages = [
-    { name: 'João P.', product: 'Pacote Premium', location: 'Belo Horizonte, MG', time: 'há 2 minutos' },
-    { name: 'Maria S.', product: 'Pacote Premium', location: 'São Paulo, SP', time: 'há 5 minutos' },
-    { name: 'Ana C.', product: 'Pacote Premium', location: 'Salvador, BA', time: 'há 8 minutos' },
-    { name: 'Pedro L.', product: 'Pacote Premium', location: 'Brasília, DF', time: 'há 12 minutos' },
-    { name: 'Fernanda M.', product: 'Pacote Premium', location: 'Rio de Janeiro, RJ', time: 'há 15 minutos' }
+    { name: 'João P.', product: 'Plano Premium', location: 'Belo Horizonte, MG', time: 'há 2 minutos' },
+    { name: 'Maria S.', product: 'Plano Premium', location: 'São Paulo, SP', time: 'há 5 minutos' },
+    { name: 'Ana C.', product: 'Plano Premium', location: 'Salvador, BA', time: 'há 8 minutos' },
+    { name: 'Pedro L.', product: 'Plano Premium', location: 'Brasília, DF', time: 'há 12 minutos' },
+    { name: 'Fernanda M.', product: 'Plano Premium', location: 'Rio de Janeiro, RJ', time: 'há 15 minutos' }
 ];
 
 let notificationIndex = 0;

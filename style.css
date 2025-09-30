@@ -1570,13 +1570,13 @@ html {
     display: flex;
     flex-direction: column;
     gap: 15px;
-    max-width: 350px;
+    max-width: 280px;
     pointer-events: none;
 }
 
 .notification {
     background: white;
-    padding: 10px 14px;
+    padding: 8px 10px;
     border-radius: 12px;
     box-shadow: 0 4px 20px rgba(0,0,0,0.15);
     display: flex;
