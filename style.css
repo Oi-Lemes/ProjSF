@@ -47,6 +47,12 @@ body {
     100% { transform: scale(1); }
 }
 
+@keyframes pulseSoft {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.02); }
+    100% { transform: scale(1); }
+}
+
 @keyframes bounce {
     0%, 20%, 50%, 80%, 100% {
         transform: translateY(0);
@@ -183,6 +189,7 @@ body {
     display: inline-flex;
     align-items: center;
     gap: 10px;
+    animation: pulseSoft 2s ease-in-out infinite;
 }
 
 .cta-button:hover {
@@ -699,6 +706,7 @@ section {
     text-transform: uppercase;
     cursor: pointer;
     transition: all 0.3s ease;
+    animation: pulseSoft 2s ease-in-out infinite;
 }
 
 .basic-button {
@@ -1060,6 +1068,7 @@ section {
     background: var(--primary-green);
     color: white;
     box-shadow: 0 5px 15px rgba(40, 167, 69, 0.4);
+    animation: pulseSoft 2s ease-in-out infinite;
 }
 
 .guarantee-cta:hover {
@@ -1166,6 +1175,7 @@ section {
     text-transform: uppercase;
     letter-spacing: 1px;
     font-weight: 700;
+    animation: pulseSoft 2s ease-in-out infinite;
 }
 
 .final-cta:hover {
