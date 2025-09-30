@@ -427,11 +427,11 @@ function trackEvents() {
 
 // Sistema de Notificações
 const notificationMessages = [
-    { icon: 'fa-shopping-cart', title: 'Nova compra!', message: 'Maria de São Paulo acabou de comprar o Plano Premium' },
-    { icon: 'fa-check-circle', title: 'Compra confirmada!', message: 'João do Rio de Janeiro garantiu o Plano Premium' },
-    { icon: 'fa-shopping-cart', title: 'Nova compra!', message: 'Ana de Minas Gerais acabou de comprar' },
-    { icon: 'fa-check-circle', title: 'Compra confirmada!', message: 'Pedro de Brasília garantiu o Plano Premium' },
-    { icon: 'fa-shopping-cart', title: 'Nova compra!', message: 'Fernanda de Salvador acabou de comprar' }
+    { name: 'João P.', product: 'Pacote Premium', location: 'Belo Horizonte, MG', time: 'há 2 minutos' },
+    { name: 'Maria S.', product: 'Pacote Premium', location: 'São Paulo, SP', time: 'há 5 minutos' },
+    { name: 'Ana C.', product: 'Pacote Premium', location: 'Salvador, BA', time: 'há 8 minutos' },
+    { name: 'Pedro L.', product: 'Pacote Premium', location: 'Brasília, DF', time: 'há 12 minutos' },
+    { name: 'Fernanda M.', product: 'Pacote Premium', location: 'Rio de Janeiro, RJ', time: 'há 15 minutos' }
 ];
 
 let notificationIndex = 0;
@@ -444,12 +444,10 @@ function createNotification(notification) {
     notificationEl.className = 'notification';
     
     notificationEl.innerHTML = `
-        <div class="notification-icon">
-            <i class="fas ${notification.icon}"></i>
-        </div>
         <div class="notification-content">
-            <div class="notification-title">${notification.title}</div>
-            <div class="notification-message">${notification.message}</div>
+            <div class="notification-name">${notification.name}</div>
+            <div class="notification-product">Comprou: ${notification.product}</div>
+            <div class="notification-location">${notification.location} - ${notification.time}</div>
         </div>
     `;
 
