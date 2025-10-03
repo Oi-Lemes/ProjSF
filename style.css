@@ -1293,17 +1293,18 @@ section {
     }
     
     .stat {
-        min-width: 60px;
-        max-width: 85px;
-        padding: 6px 4px;
+        min-width: 90px;
+        max-width: 120px;
+        padding: 8px 6px;
     }
     
     .stat strong {
-        font-size: 1.4rem;
+        font-size: 1.3rem;
     }
     
     .stat span {
-        font-size: 0.7rem;
+        font-size: 0.65rem;
+        line-height: 1.2;
     }
     
     .author-info p {
@@ -1517,16 +1518,17 @@ section {
     }
     
     .stat {
-        min-width: 60px;
-        max-width: 90px;
+        min-width: 90px;
+        max-width: 120px;
     }
     
     .stat strong {
-        font-size: 1.5rem;
+        font-size: 1.3rem;
     }
     
     .stat span {
-        font-size: 0.75rem;
+        font-size: 0.65rem;
+        line-height: 1.2;
     }
     
     .testimonial-photo {
