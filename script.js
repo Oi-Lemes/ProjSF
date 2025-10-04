@@ -135,6 +135,8 @@ function addPlanButtonEffects() {
     
     planButtons.forEach(button => {
         button.addEventListener('click', function(e) {
+            e.preventDefault();
+            
             // Cria efeito de ripple
             const ripple = document.createElement('span');
             const rect = this.getBoundingClientRect();
@@ -161,14 +163,17 @@ function addPlanButtonEffects() {
                 ripple.remove();
             }, 600);
             
-            // Redireciona para o checkout correto baseado no plano
-            setTimeout(() => {
-                if (this.classList.contains('basic-button')) {
-                    window.location.href = 'https://checkout.dinamicasdivertida.site/VCCL1O8SCBJ0';
-                } else if (this.classList.contains('premium-button')) {
+            // Se for botão básico, mostra o pop-up de upgrade
+            if (this.classList.contains('basic-button')) {
+                setTimeout(() => {
+                    showUpgradePopup();
+                }, 400);
+            } else if (this.classList.contains('premium-button')) {
+                // Redireciona para o checkout premium
+                setTimeout(() => {
                     window.location.href = 'https://checkout.dinamicasdivertida.site/VCCL1O8SCBJI';
-                }
-            }, 300);
+                }, 300);
+            }
         });
     });
 }
@@ -477,6 +482,54 @@ function startNotificationSystem() {
         notificationIndex = (notificationIndex + 1) % notificationMessages.length;
     }, Math.random() * 7000 + 8000); // Entre 8 e 15 segundos
 }
+
+// Funções do Pop-up de Upgrade
+function showUpgradePopup() {
+    const popup = document.getElementById('upgrade-popup');
+    if (popup) {
+        popup.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+}
+
+function hideUpgradePopup() {
+    const popup = document.getElementById('upgrade-popup');
+    if (popup) {
+        popup.classList.remove('active');
+        document.body.style.overflow = 'auto';
+    }
+}
+
+// Event listeners para os botões do pop-up
+document.addEventListener('DOMContentLoaded', function() {
+    const acceptBtn = document.getElementById('accept-upgrade');
+    const declineBtn = document.getElementById('decline-upgrade');
+    const popup = document.getElementById('upgrade-popup');
+    
+    // Botão de aceitar upgrade - redireciona para premium com desconto
+    if (acceptBtn) {
+        acceptBtn.addEventListener('click', function() {
+            // Redireciona para checkout premium (você pode usar um link específico para o desconto de R$17)
+            window.location.href = 'https://checkout.dinamicasdivertida.site/VCCL1O8SCBJI';
+        });
+    }
+    
+    // Botão de declinar - redireciona para checkout básico
+    if (declineBtn) {
+        declineBtn.addEventListener('click', function() {
+            window.location.href = 'https://checkout.dinamicasdivertida.site/VCCL1O8SCBJ0';
+        });
+    }
+    
+    // Fecha o pop-up ao clicar fora do conteúdo
+    if (popup) {
+        popup.addEventListener('click', function(e) {
+            if (e.target === popup) {
+                hideUpgradePopup();
+            }
+        });
+    }
+});
 
 // Inicializa a aplicação
 initializeApp();
