@@ -1759,7 +1759,7 @@ html {
 .popup-content {
     background: white;
     border-radius: 16px;
-    padding: 30px 25px;
+    padding: 20px 20px;
     max-width: 380px;
     width: 90%;
     text-align: center;
@@ -1769,22 +1769,22 @@ html {
 }
 
 .popup-icon {
-    font-size: 3rem;
-    margin-bottom: 15px;
+    font-size: 2.5rem;
+    margin-bottom: 10px;
     animation: bounce 1s ease infinite;
 }
 
 .popup-title {
     font-size: 1.5rem;
     color: #1a1a1a;
-    margin-bottom: 8px;
+    margin-bottom: 6px;
     font-weight: 700;
 }
 
 .popup-subtitle {
     font-size: 0.95rem;
     color: #666;
-    margin-bottom: 20px;
+    margin-bottom: 12px;
 }
 
 .popup-subtitle strong {
@@ -1795,8 +1795,8 @@ html {
 .popup-price {
     background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
     border-radius: 12px;
-    padding: 18px;
-    margin-bottom: 18px;
+    padding: 12px;
+    margin-bottom: 12px;
 }
 
 .popup-old-price {
@@ -1821,13 +1821,13 @@ html {
 
 .popup-benefits {
     text-align: left;
-    margin-bottom: 20px;
+    margin-bottom: 12px;
 }
 
 .popup-benefit {
     font-size: 0.9rem;
     color: #333;
-    padding: 6px 0;
+    padding: 4px 0;
     border-bottom: 1px solid #f0f0f0;
 }
 
@@ -1842,7 +1842,7 @@ html {
 }
 
 .popup-btn {
-    padding: 14px 24px;
+    padding: 12px 24px;
     border: none;
     border-radius: 8px;
     font-size: 0.95rem;
