@@ -790,6 +790,10 @@ section {
     cursor: pointer;
     transition: all 0.3s ease;
     animation: pulseSoft 2s ease-in-out infinite;
+    display: block;
+    text-align: center;
+    text-decoration: none;
+    box-sizing: border-box;
 }
 
 .basic-button {
