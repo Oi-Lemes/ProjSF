@@ -167,6 +167,13 @@ body {
     box-shadow: 0 10px 30px rgba(0,0,0,0.2);
 }
 
+.video-wrapper video {
+    width: 100%;
+    height: auto;
+    border-radius: 15px;
+    display: block;
+}
+
 .video-wrapper iframe {
     position: absolute;
     top: 0;
