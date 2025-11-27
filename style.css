@@ -194,6 +194,11 @@ body {
     border-radius: 12px;
 }
 
+.video-wrapper {
+    max-width: 350px;
+    margin: 0 auto 30px auto;
+}
+
 .play-overlay {
     position: absolute;
     top: 0;
