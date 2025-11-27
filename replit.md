@@ -21,11 +21,16 @@ Preferred communication style: Simple, everyday language.
 - **Typography**: Inter font family from Google Fonts for modern readability
 - **Icon System**: Font Awesome 6.0 for consistent iconography
 
-## Color Palette (Yoga Theme)
-- Primary Purple: #7B68EE (yoga-purple)
-- Lavender: #9B7BB8 (yoga-lavender)  
-- Sage Green: #8FBC8F (yoga-sage)
-- Dark variants for hover states
+## Color Palette (Yoga Theme - Vibrant Edition)
+- Primary Purple: #8B5CF6 (vibrant violet)
+- Yoga Purple: #A855F7 (bright purple)
+- Yoga Lavender: #C084FC (vivid lavender)
+- Primary Green: #10B981 (emerald)
+- Yoga Sage: #34D399 (bright mint)
+- Yoga Coral: #FB7185 (coral pink)
+- Yoga Gold: #FBBF24 (golden yellow)
+- Urgency Red: #EF4444 (bright red)
+- Urgency Orange: #F97316 (vivid orange)
 
 ## Interactive Features
 - **Smooth Scrolling**: JavaScript-powered smooth navigation to pricing sections
