@@ -18,15 +18,18 @@ body {
     padding: 0 20px;
 }
 
-/* Cores Principais */
+/* Cores Principais - Tema Yoga */
 :root {
-    --primary-blue: #007BFF;
-    --primary-green: #28A745;
-    --dark-blue: #0056b3;
-    --dark-green: #1e7e34;
+    --primary-blue: #7B68EE;
+    --primary-green: #6B8E6B;
+    --dark-blue: #5A4FCF;
+    --dark-green: #4A6B4A;
     --light-gray: #f8f9fa;
     --dark-gray: #343a40;
     --border-color: #dee2e6;
+    --yoga-purple: #7B68EE;
+    --yoga-sage: #8FBC8F;
+    --yoga-lavender: #9B7BB8;
 }
 
 /* Animações */
@@ -67,7 +70,7 @@ body {
 
 /* Topo com Aviso de Urgência */
 .urgency-banner {
-    background: #e74c3c;
+    background: linear-gradient(135deg, #7B68EE 0%, #9B7BB8 100%);
     color: white;
     text-align: center;
     padding: 15px 0;
@@ -118,7 +121,7 @@ body {
 }
 
 .number-500 {
-    color: #ff6b35;
+    color: #7B68EE;
     font-weight: 800;
 }
 
@@ -171,7 +174,7 @@ body {
 }
 
 .cta-button {
-    background: var(--primary-green);
+    background: linear-gradient(135deg, #7B68EE 0%, #9B7BB8 100%);
     color: white;
     border: none;
     padding: 18px 40px;
@@ -182,7 +185,7 @@ body {
     transition: all 0.3s ease;
     text-transform: uppercase;
     letter-spacing: 1px;
-    box-shadow: 0 5px 15px rgba(40, 167, 69, 0.4);
+    box-shadow: 0 5px 15px rgba(123, 104, 238, 0.4);
     display: inline-flex;
     align-items: center;
     gap: 10px;
@@ -190,9 +193,9 @@ body {
 }
 
 .cta-button:hover {
-    background: var(--dark-green);
+    background: linear-gradient(135deg, #5A4FCF 0%, #7B68EE 100%);
     transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(40, 167, 69, 0.6);
+    box-shadow: 0 8px 25px rgba(123, 104, 238, 0.6);
 }
 
 .hero-cta {
@@ -288,7 +291,7 @@ section {
     font-size: 2.2rem;
     color: white;
     margin: 0 auto 25px;
-    background: linear-gradient(135deg, #4A90E2, #357ABD);
+    background: linear-gradient(135deg, #7B68EE, #9B7BB8);
     width: 80px;
     height: 80px;
     border-radius: 50%;
@@ -296,7 +299,7 @@ section {
     align-items: center;
     justify-content: center;
     transition: all 0.3s ease;
-    box-shadow: 0 4px 15px rgba(74,144,226,0.3);
+    box-shadow: 0 4px 15px rgba(123,104,238,0.3);
     line-height: 1;
     position: relative;
 }
@@ -310,7 +313,7 @@ section {
 
 .benefit-card:hover .benefit-icon {
     transform: translateY(-3px) scale(1.05);
-    box-shadow: 0 6px 20px rgba(74,144,226,0.4);
+    box-shadow: 0 6px 20px rgba(123,104,238,0.4);
 }
 
 .benefit-card h3 {
@@ -367,7 +370,7 @@ section {
     font-size: 2.2rem;
     color: white;
     margin: 0 auto 25px;
-    background: linear-gradient(135deg, #52B788, #3D8B63);
+    background: linear-gradient(135deg, #8FBC8F, #6B8E6B);
     width: 80px;
     height: 80px;
     border-radius: 50%;
@@ -375,7 +378,7 @@ section {
     align-items: center;
     justify-content: center;
     transition: all 0.3s ease;
-    box-shadow: 0 4px 15px rgba(82,183,136,0.3);
+    box-shadow: 0 4px 15px rgba(107,142,107,0.3);
     line-height: 1;
     position: relative;
 }
@@ -389,7 +392,7 @@ section {
 
 .exclusive-card:hover .exclusive-icon {
     transform: translateY(-3px) scale(1.05);
-    box-shadow: 0 6px 20px rgba(82,183,136,0.4);
+    box-shadow: 0 6px 20px rgba(107,142,107,0.4);
 }
 
 .exclusive-card h3 {
@@ -611,7 +614,7 @@ section {
 }
 
 .plan-card.popular {
-    border: 2px solid var(--primary-green);
+    border: 2px solid #7B68EE;
     transform: none;
 }
 
@@ -620,7 +623,7 @@ section {
     top: -15px;
     left: 50%;
     transform: translateX(-50%);
-    background: var(--primary-green);
+    background: linear-gradient(135deg, #7B68EE, #9B7BB8);
     color: white;
     padding: 8px 20px;
     border-radius: 25px;
@@ -716,13 +719,13 @@ section {
 }
 
 .premium-button {
-    background: var(--primary-green);
+    background: linear-gradient(135deg, #7B68EE 0%, #9B7BB8 100%);
     color: white;
-    box-shadow: 0 5px 15px rgba(40, 167, 69, 0.4);
+    box-shadow: 0 5px 15px rgba(123, 104, 238, 0.4);
 }
 
 .premium-button:hover {
-    background: var(--dark-green);
+    background: linear-gradient(135deg, #5A4FCF 0%, #7B68EE 100%);
     transform: translateY(-2px);
 }
 
@@ -746,11 +749,11 @@ section {
 
 /* Bonus Items */
 .bonus-item {
-    color: #fd7e14 !important;
+    color: #9B7BB8 !important;
 }
 
 .bonus-item i {
-    color: #fd7e14 !important;
+    color: #9B7BB8 !important;
 }
 
 /* Depoimentos */
@@ -1023,7 +1026,7 @@ section {
     border-radius: 20px;
     box-shadow: 0 10px 40px rgba(0,0,0,0.1);
     background: white;
-    border: 2px solid var(--primary-green);
+    border: 2px solid #7B68EE;
 }
 
 .guarantee-badge {
@@ -1036,7 +1039,7 @@ section {
 
 .guarantee-badge i {
     font-size: 180px;
-    color: var(--primary-green);
+    color: #7B68EE;
     position: absolute;
     top: 0;
     left: 0;

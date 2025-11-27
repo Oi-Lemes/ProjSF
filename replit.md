@@ -1,6 +1,6 @@
 # Overview
 
-This project is a modern, high-conversion sales landing page for "+500 Dinâmicas Interativas de Inglês" (500+ Interactive English Activities). The landing page is designed to sell educational English language materials to teachers and educators in Brazil. It features a complete sales funnel with urgency banners, product benefits, pricing plans, testimonials, and author credentials. The page is built using vanilla web technologies without any frameworks, focusing on conversion optimization and responsive design.
+This project is a modern, high-conversion sales landing page for "70 Dinâmicas de Yoga" (70 Yoga Dynamics). The landing page is designed to sell educational yoga materials to yoga instructors, practitioners, and wellness professionals in Brazil. It features a complete sales funnel with urgency banners, product benefits, pricing plans, testimonials, and author credentials. The page is built using vanilla web technologies without any frameworks, focusing on conversion optimization and responsive design.
 
 # User Preferences
 
@@ -16,23 +16,31 @@ Preferred communication style: Simple, everyday language.
 - **Component-Based Styling**: Modular CSS classes for reusable UI components
 
 ## Design System
-- **CSS Custom Properties**: Root-level color variables for consistent theming
+- **CSS Custom Properties**: Root-level color variables for consistent theming (yoga-themed colors: purple, lavender, sage green)
 - **Animation Framework**: Custom keyframe animations (fadeInUp, pulse, bounce) for enhanced UX
 - **Typography**: Inter font family from Google Fonts for modern readability
 - **Icon System**: Font Awesome 6.0 for consistent iconography
 
+## Color Palette (Yoga Theme)
+- Primary Purple: #7B68EE (yoga-purple)
+- Lavender: #9B7BB8 (yoga-lavender)  
+- Sage Green: #8FBC8F (yoga-sage)
+- Dark variants for hover states
+
 ## Interactive Features
 - **Smooth Scrolling**: JavaScript-powered smooth navigation to pricing sections
 - **FAQ Toggle System**: Expandable/collapsible FAQ items with JavaScript state management
-- **Countdown Timer**: Real-time 24-hour countdown timer to create urgency
+- **Countdown Timer**: Real-time countdown timer to create urgency
 - **Conversion Optimization**: Multiple CTA buttons strategically placed throughout the page
 
 ## Content Structure
-- **Hero Section**: Primary value proposition with urgent call-to-action
-- **Benefits Grid**: Card-based layout showcasing product features
+- **Hero Section**: Primary value proposition with "70 Dinâmicas de Yoga" call-to-action
+- **Benefits Grid**: Card-based layout showcasing yoga practice features
+- **Bonus Section**: Yoga-related bonuses (Certificate, Meditation Guide, Pranayamas)
 - **Pricing Plans**: Tiered pricing structure with highlighted "most popular" option
-- **Social Proof**: Testimonials section for credibility
-- **Author Authority**: Credentials section to establish expertise
+- **Social Proof**: Testimonials from yoga instructors and practitioners
+- **Author Authority**: Credentials of yoga instructor/author
+- **FAQ**: Common questions about yoga dynamics material
 
 # External Dependencies
 
@@ -43,31 +51,12 @@ Preferred communication style: Simple, everyday language.
 
 ## Third-Party Services
 - **Payment Processing**: Prepared for integration with Brazilian payment gateways (implementation pending)
-- **Analytics**: Ready for Google Analytics or similar tracking implementation
-- **Email Marketing**: Structured for lead capture and email service integration
-
-## Browser Compatibility
-- **Modern Browser Support**: Utilizes CSS Grid, Flexbox, and ES6+ JavaScript features
-- **Progressive Enhancement**: Graceful degradation for older browsers
-- **Mobile Optimization**: Responsive design for cross-device compatibility
 
 # Recent Changes
 
-## October 3, 2025 - Adaptation to Portuguese Language Materials
-- **Latest Update (October 2025)**: Adapted entire landing page from Portuguese to English language materials
-- **Title & Hero**: Changed main title to "+500 Dinâmicas Interativas de Inglês" with updated subtitle focused on interactive English teaching
-- **Benefits Section**: Updated all references from Portuguese to English language teaching, removed BNCC references, added focus on communicative methodology
-- **Bonus Materials**: Adapted bonuses to English-focused content (Certificado de Inglês, Jogos Interativos de Inglês, Quiz de Inglês)
-- **Pricing Plans**: Updated plan features to reflect interactive English dynamics
-- **Testimonials**: Modified all testimonials to English teaching context, emphasizing fluency and communication
-- **Author Section**: Changed author specialty from Portuguese to English language educator, updated certification to "Inglês Comunicativo"
-- **FAQ Section**: Updated answers to reflect communicative methodology and interactive approach
-
-## September 28, 2025 - Author Section & Mobile Optimization
-- **Author Image**: Replaced icon with actual professor photo (Profª Ana Carvalho)
-- **Image Styling**: Made author image perfectly round with border and shadow effects  
-- **Layout Optimization**: Reduced spacing and made elements more compact
-- **Mobile-First Design**: Improved mobile responsiveness with proper image stacking
-- **Size Reductions**: Compressed text sizes, padding, and element dimensions for better space utilization
-- **Bonus Section**: Reorganized bonus items - moved "Quiz de Matematica Divertido e Dinamico" to last position
-- **Text Updates**: Changed "100 Perguntas de Matemática" to "Quiz de Matematica Divertido e Dinamico"
+- **November 2025**: Adapted page from English teaching dynamics to 70 Yoga Dynamics
+  - Updated all content, titles, and descriptions for yoga theme
+  - Changed color scheme to calming yoga colors (purple, lavender, sage green)
+  - Updated bonuses to yoga-related items (Certificate, Meditation Guide, Pranayamas)
+  - Adapted testimonials for yoga instructors and practitioners
+  - Updated FAQ for yoga-specific questions
