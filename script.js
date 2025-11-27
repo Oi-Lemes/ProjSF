@@ -538,9 +538,23 @@ function setupVideoPlayer() {
     
     if (!video) return;
     
-    // Pré-carrega o vídeo
+    // Pré-carrega o vídeo agressivamente em segundo plano
     video.preload = 'auto';
-    video.load();
+    
+    // Força o download do vídeo em segundo plano
+    fetch(video.querySelector('source').src)
+        .then(function(response) {
+            return response.blob();
+        })
+        .then(function(blob) {
+            var videoUrl = URL.createObjectURL(blob);
+            video.src = videoUrl;
+            video.load();
+        })
+        .catch(function() {
+            // Se falhar, usa o método normal
+            video.load();
+        });
     
     // Clique no vídeo para pausar/continuar
     video.addEventListener('click', function() {
