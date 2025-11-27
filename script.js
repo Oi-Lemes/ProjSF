@@ -531,15 +531,32 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
-// Controle do vídeo - Simplificado com controles nativos
+// Controle do vídeo - Sem controles, apenas clique para pausar/continuar
 function setupVideoPlayer() {
     const video = document.getElementById('hero-video');
+    const videoHint = document.querySelector('.video-hint');
     
     if (!video) return;
     
     // Pré-carrega o vídeo
     video.preload = 'auto';
     video.load();
+    
+    // Clique no vídeo para pausar/continuar
+    video.addEventListener('click', function() {
+        if (video.paused) {
+            video.play();
+            if (videoHint) videoHint.style.display = 'none';
+        } else {
+            video.pause();
+            if (videoHint) videoHint.style.display = 'block';
+        }
+    });
+    
+    // Quando o vídeo terminar, mostra o aviso novamente
+    video.addEventListener('ended', function() {
+        if (videoHint) videoHint.style.display = 'block';
+    });
 }
 
 // Inicializa a aplicação
