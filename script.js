@@ -531,7 +531,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
-// Controle do vídeo customizado
+// Controle do vídeo customizado - Otimizado para reprodução instantânea
 function setupVideoPlayer() {
     const video = document.getElementById('hero-video');
     const playButton = document.getElementById('play-button');
@@ -539,71 +539,81 @@ function setupVideoPlayer() {
     
     if (!video || !playButton || !videoContainer) return;
     
-    // Cria poster a partir do primeiro frame do vídeo
-    function createPosterFromVideo() {
-        const canvas = document.createElement('canvas');
-        canvas.width = video.videoWidth || 640;
-        canvas.height = video.videoHeight || 360;
-        const ctx = canvas.getContext('2d');
-        ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
-        
-        try {
-            const posterUrl = canvas.toDataURL('image/jpeg', 0.8);
-            video.poster = posterUrl;
-            videoContainer.classList.add('video-ready');
-        } catch(e) {
-            console.log('Não foi possível criar poster:', e);
-        }
-    }
+    let videoReady = false;
+    let videoFullyLoaded = false;
     
-    // Pré-carrega o vídeo completamente e mostra o primeiro frame
-    function preloadVideo() {
-        // Força o carregamento completo
+    // Pré-carrega o vídeo de forma agressiva para reprodução instantânea
+    function preloadVideoAggressive() {
         video.preload = 'auto';
+        video.muted = true;
         
-        // Quando houver metadados, define para o primeiro frame
-        video.addEventListener('loadedmetadata', function() {
-            video.currentTime = 0.5;
-        }, { once: true });
-        
-        // Quando o frame for buscado, cria o poster
-        video.addEventListener('seeked', function() {
-            createPosterFromVideo();
-        }, { once: true });
-        
-        // Quando puder reproduzir, garante que está pronto
+        // Marca como pronto quando puder reproduzir
         video.addEventListener('canplay', function() {
-            if (!video.poster) {
-                createPosterFromVideo();
-            }
+            videoReady = true;
             videoContainer.classList.add('video-ready');
         }, { once: true });
         
-        // Garante que o vídeo está pronto para reprodução instantânea
+        // Marca como totalmente carregado
         video.addEventListener('canplaythrough', function() {
-            console.log('Vídeo pronto para reprodução instantânea');
+            videoFullyLoaded = true;
+            videoContainer.classList.add('video-ready');
         }, { once: true });
         
-        // Força o carregamento do vídeo
+        // Força o carregamento imediato
         video.load();
+        
+        // Técnica de pré-buffer: inicia reprodução silenciosa por 0.1s e pausa
+        video.addEventListener('loadeddata', function() {
+            video.currentTime = 0;
+            video.muted = true;
+            var playPromise = video.play();
+            if (playPromise !== undefined) {
+                playPromise.then(function() {
+                    setTimeout(function() {
+                        video.pause();
+                        video.currentTime = 0;
+                        video.muted = true;
+                        videoReady = true;
+                    }, 100);
+                }).catch(function() {
+                    videoReady = true;
+                });
+            }
+        }, { once: true });
     }
     
     // Inicia o pré-carregamento imediatamente
-    preloadVideo();
+    preloadVideoAggressive();
     
     function playVideo() {
-        // Começa do início quando clicar
-        video.currentTime = 0;
+        // Reproduz imediatamente sem resetar posição se já estiver carregado
         video.muted = false;
-        video.play().then(function() {
-            playButton.classList.add('hidden');
-        }).catch(function(error) {
-            console.log('Erro ao reproduzir:', error);
-            video.muted = true;
-            video.play().then(function() {
+        
+        // Se o vídeo não começou ainda, inicia do zero
+        if (video.currentTime < 0.5 || video.ended) {
+            video.currentTime = 0;
+        }
+        
+        var playPromise = video.play();
+        
+        if (playPromise !== undefined) {
+            playPromise.then(function() {
                 playButton.classList.add('hidden');
+            }).catch(function(error) {
+                // Fallback: tenta com mudo (autoplay policies)
+                video.muted = true;
+                video.play().then(function() {
+                    playButton.classList.add('hidden');
+                    // Tenta desmutar após iniciar
+                    setTimeout(function() {
+                        video.muted = false;
+                    }, 100);
+                }).catch(function() {
+                    // Se falhar, mostra mensagem
+                    console.log('Toque na tela para ativar o vídeo');
+                });
             });
-        });
+        }
     }
     
     function pauseVideo() {
@@ -627,6 +637,7 @@ function setupVideoPlayer() {
     
     video.addEventListener('ended', function() {
         playButton.classList.remove('hidden');
+        video.currentTime = 0;
     });
 }
 
