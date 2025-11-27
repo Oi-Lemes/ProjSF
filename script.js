@@ -531,114 +531,15 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
-// Controle do vídeo customizado - Otimizado para reprodução instantânea
+// Controle do vídeo - Simplificado com controles nativos
 function setupVideoPlayer() {
     const video = document.getElementById('hero-video');
-    const playButton = document.getElementById('play-button');
-    const videoContainer = document.getElementById('video-container');
     
-    if (!video || !playButton || !videoContainer) return;
+    if (!video) return;
     
-    let videoReady = false;
-    let videoFullyLoaded = false;
-    
-    // Pré-carrega o vídeo de forma agressiva para reprodução instantânea
-    function preloadVideoAggressive() {
-        video.preload = 'auto';
-        video.muted = true;
-        
-        // Marca como pronto quando puder reproduzir
-        video.addEventListener('canplay', function() {
-            videoReady = true;
-            videoContainer.classList.add('video-ready');
-        }, { once: true });
-        
-        // Marca como totalmente carregado
-        video.addEventListener('canplaythrough', function() {
-            videoFullyLoaded = true;
-            videoContainer.classList.add('video-ready');
-        }, { once: true });
-        
-        // Força o carregamento imediato
-        video.load();
-        
-        // Técnica de pré-buffer: inicia reprodução silenciosa por 0.1s e pausa
-        video.addEventListener('loadeddata', function() {
-            video.currentTime = 0;
-            video.muted = true;
-            var playPromise = video.play();
-            if (playPromise !== undefined) {
-                playPromise.then(function() {
-                    setTimeout(function() {
-                        video.pause();
-                        video.currentTime = 0;
-                        video.muted = true;
-                        videoReady = true;
-                    }, 100);
-                }).catch(function() {
-                    videoReady = true;
-                });
-            }
-        }, { once: true });
-    }
-    
-    // Inicia o pré-carregamento imediatamente
-    preloadVideoAggressive();
-    
-    function playVideo() {
-        // Reproduz imediatamente sem resetar posição se já estiver carregado
-        video.muted = false;
-        
-        // Se o vídeo não começou ainda, inicia do zero
-        if (video.currentTime < 0.5 || video.ended) {
-            video.currentTime = 0;
-        }
-        
-        var playPromise = video.play();
-        
-        if (playPromise !== undefined) {
-            playPromise.then(function() {
-                playButton.classList.add('hidden');
-            }).catch(function(error) {
-                // Fallback: tenta com mudo (autoplay policies)
-                video.muted = true;
-                video.play().then(function() {
-                    playButton.classList.add('hidden');
-                    // Tenta desmutar após iniciar
-                    setTimeout(function() {
-                        video.muted = false;
-                    }, 100);
-                }).catch(function() {
-                    // Se falhar, mostra mensagem
-                    console.log('Toque na tela para ativar o vídeo');
-                });
-            });
-        }
-    }
-    
-    function pauseVideo() {
-        video.pause();
-        playButton.classList.remove('hidden');
-    }
-    
-    function toggleVideo(e) {
-        e.preventDefault();
-        e.stopPropagation();
-        
-        if (video.paused) {
-            playVideo();
-        } else {
-            pauseVideo();
-        }
-    }
-    
-    playButton.addEventListener('click', toggleVideo);
-    video.addEventListener('click', toggleVideo);
-    
-    video.addEventListener('ended', function() {
-        playButton.classList.remove('hidden');
-        video.currentTime = 0;
-    });
+    // Pré-carrega o vídeo
+    video.preload = 'auto';
+    video.load();
 }
 
 // Inicializa a aplicação
