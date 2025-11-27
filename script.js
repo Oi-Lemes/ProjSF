@@ -484,7 +484,10 @@ function startNotificationSystem() {
 }
 
 // Funções do Pop-up de Upgrade
-function showUpgradePopup() {
+function showUpgradePopup(event) {
+    if (event) {
+        event.preventDefault();
+    }
     const popup = document.getElementById('upgrade-popup');
     if (popup) {
         popup.classList.add('active');
@@ -500,28 +503,11 @@ function hideUpgradePopup() {
     }
 }
 
-// Event listeners para os botões do pop-up
+// Event listeners para o pop-up
 document.addEventListener('DOMContentLoaded', function() {
-    const acceptBtn = document.getElementById('accept-upgrade');
-    const declineBtn = document.getElementById('decline-upgrade');
     const popup = document.getElementById('upgrade-popup');
     
-    // Botão de aceitar upgrade - redireciona para premium com desconto
-    if (acceptBtn) {
-        acceptBtn.addEventListener('click', function() {
-            // Redireciona para checkout premium com desconto de R$17
-            window.location.href = 'https://checkout.dinamicasdeingles.site/VCCL1O8SCCDU';
-        });
-    }
-    
-    // Botão de declinar - redireciona para checkout básico
-    if (declineBtn) {
-        declineBtn.addEventListener('click', function() {
-            window.location.href = 'https://checkout.dinamicasdeingles.site/VCCL1O8SCCDO';
-        });
-    }
-    
-    // Fecha o pop-up ao clicar fora do conteúdo
+    // Fecha o pop-up ao clicar fora do card
     if (popup) {
         popup.addEventListener('click', function(e) {
             if (e.target === popup) {

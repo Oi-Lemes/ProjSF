@@ -183,7 +183,7 @@
                         <li><i class="fas fa-check"></i> Acesso digital</li>
                         <li><i class="fas fa-check"></i> Garantia de 7 dias</li>
                     </ul>
-                    <a href="https://checkout.dinamicasincriveis.shop/VCCL1O8SCCDO" class="plan-button basic-button">ESCOLHER BÁSICO</a>
+                    <a href="#" class="plan-button basic-button" id="basic-plan-btn" onclick="showUpgradePopup(event)">ESCOLHER BÁSICO</a>
                 </div>
                 <div class="plan-card premium popular">
                     <div class="popular-badge">MAIS POPULAR</div>
@@ -375,30 +375,29 @@
 
     <!-- Pop-up de Upgrade Premium -->
     <div id="upgrade-popup" class="popup-overlay">
-        <div class="popup-content">
-            <div class="popup-icon">🧘</div>
-            <h3 class="popup-title">Espere! Oferta Exclusiva!</h3>
-            <p class="popup-subtitle">Upgrade para o Premium com <strong>DESCONTO EXTRA</strong></p>
+        <div class="popup-card">
+            <h3 class="popup-title">Espere! Oferta Especial</h3>
+            <p class="popup-subtitle">Leve o <strong>Plano Premium</strong> com desconto exclusivo!</p>
             
             <div class="popup-price">
-                <div class="popup-old-price">De R$27,00</div>
-                <div class="popup-new-price">Por apenas R$17,00</div>
-                <div class="popup-save">Economize R$10 agora!</div>
+                <span class="popup-old-price">De R$27</span>
+                <span class="popup-new-price">R$17</span>
             </div>
             
-            <div class="popup-benefits">
-                <div class="popup-benefit">✓ Todos os 3 bônus inclusos</div>
-                <div class="popup-benefit">✓ Atualizações mensais</div>
-                <div class="popup-benefit">✓ Suporte prioritário</div>
-            </div>
+            <ul class="popup-benefits">
+                <li>70 Dinâmicas de Yoga</li>
+                <li>Certificado de Yoga</li>
+                <li>Guia de Meditação Guiada</li>
+                <li>Pranayamas e Técnicas de Respiração</li>
+            </ul>
             
             <div class="popup-buttons">
-                <button class="popup-btn popup-btn-accept" id="accept-upgrade">
-                    SIM, QUERO O DESCONTO!
-                </button>
-                <button class="popup-btn popup-btn-decline" id="decline-upgrade">
-                    Não, quero o básico
-                </button>
+                <a href="https://checkout.dinamicasincriveis.shop/VCCL1O8SCCDT" class="popup-btn popup-btn-accept" id="accept-upgrade">
+                    QUERO O PREMIUM POR R$17
+                </a>
+                <a href="https://checkout.dinamicasincriveis.shop/VCCL1O8SCCDO" class="popup-btn popup-btn-decline" id="decline-upgrade">
+                    Continuar com o Básico
+                </a>
             </div>
         </div>
     </div>

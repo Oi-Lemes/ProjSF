@@ -1842,11 +1842,20 @@ html {
     align-items: center;
     justify-content: center;
     z-index: 10000;
-    animation: fadeIn 0.3s ease;
 }
 
 .popup-overlay.active {
     display: flex;
+}
+
+.popup-card {
+    background: white;
+    border-radius: 16px;
+    padding: 30px;
+    max-width: 360px;
+    width: 90%;
+    text-align: center;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
 }
 
 .popup-content {
@@ -1934,15 +1943,73 @@ html {
     gap: 10px;
 }
 
+.popup-card .popup-title {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin-bottom: 8px;
+}
+
+.popup-card .popup-subtitle {
+    font-size: 1rem;
+    color: #555;
+    margin-bottom: 20px;
+}
+
+.popup-card .popup-price {
+    margin-bottom: 20px;
+}
+
+.popup-card .popup-old-price {
+    font-size: 1rem;
+    color: #999;
+    text-decoration: line-through;
+    margin-right: 10px;
+}
+
+.popup-card .popup-new-price {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--primary-green);
+}
+
+.popup-card .popup-benefits {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 25px 0;
+    text-align: left;
+}
+
+.popup-card .popup-benefits li {
+    padding: 6px 0;
+    color: #333;
+    font-size: 0.95rem;
+}
+
+.popup-card .popup-benefits li::before {
+    content: "✓";
+    color: var(--primary-green);
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.popup-card .popup-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
 .popup-btn {
-    padding: 12px 24px;
+    padding: 14px 24px;
     border: none;
     border-radius: 8px;
     font-size: 0.95rem;
     font-weight: 600;
     cursor: pointer;
     transition: all 0.3s ease;
-    text-transform: uppercase;
+    text-decoration: none;
+    text-align: center;
+    display: block;
 }
 
 .popup-btn-accept {
@@ -1960,10 +2027,9 @@ html {
 .popup-btn-decline {
     background: transparent;
     color: #666;
-    font-size: 0.85rem;
+    font-size: 0.9rem;
     font-weight: 500;
-    text-transform: none;
-    border: 1.5px solid #d1d5db;
+    border: 1px solid #ddd;
 }
 
 .popup-btn-decline:hover {
