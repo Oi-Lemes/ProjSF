@@ -72,12 +72,12 @@ body {
 
 /* Topo com Aviso de Urgência */
 .urgency-banner {
-    background: linear-gradient(135deg, #10B981 0%, #34D399 50%, #6EE7B7 100%);
+    background: #CD5C5C;
     color: white;
     text-align: center;
     padding: 15px 0;
     position: relative;
-    box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
+    box-shadow: 0 4px 15px rgba(205, 92, 92, 0.3);
 }
 
 .urgency-text {
@@ -85,6 +85,11 @@ body {
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 1px;
+}
+
+.urgency-text .date-highlight {
+    color: #FFD700;
+    font-weight: 700;
 }
 
 /* Hero Section */
