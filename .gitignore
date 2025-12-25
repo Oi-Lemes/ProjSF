@@ -1,0 +1,6 @@
+out/
+__pycache__/
+*.pyc
+site_para_upload.zip
+.replit
+.gemini/
