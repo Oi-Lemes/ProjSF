@@ -211,18 +211,27 @@ window.copyPixCode = function () {
 
 
 // POLLING FUNCTION
-let pollingInterval;
+let fallbackTimeout;
 
 function startPolling(txId) {
     if (pollingInterval) clearInterval(pollingInterval);
+    if (fallbackTimeout) clearTimeout(fallbackTimeout);
 
-    // Check every 5 seconds
+    // 1. Fallback Safety Net: Show button after 10 seconds if auto-detect fails
+    fallbackTimeout = setTimeout(() => {
+        const fallbackBtn = document.getElementById('fallback-confirm-btn');
+        if (fallbackBtn) {
+            fallbackBtn.style.display = 'block';
+            fallbackBtn.style.opacity = '0';
+            setTimeout(() => fallbackBtn.style.opacity = '1', 100); // Fade in
+        }
+    }, 10000);
+
+    // 2. Check every 4 seconds
     pollingInterval = setInterval(async () => {
         try {
-            // Construct Status URL (Guessing based on common Paradise patterns and search result)
-            // If /transaction.php handles POST, maybe it or a sibling handles GET
-            // Search suggested: /api/v1/payment/status
-            const statusUrl = `https://multi.paradisepags.com/api/v1/payment/status?id=${txId}`;
+            // Updated Endpoint Logic: standard transaction check
+            const statusUrl = `${API_CONFIG.url}?id=${txId}`;
 
             const response = await fetch(statusUrl, {
                 method: 'GET',
@@ -233,18 +242,21 @@ function startPolling(txId) {
             });
 
             const data = await response.json();
-
-            // Allow silent failure in console to avoid spam
-            // console.log("Poll Status:", data);
+            console.log("Status Check:", data.status || "no-status");
 
             // Check for success status
-            // Common variations: status: 'paid', 'approved', 'completed'
-            if (data.status === 'paid' || data.status === 'approved' || data.status === 'completed' || data.paid === true) {
+            if (response.ok && (
+                data.status === 'paid' ||
+                data.status === 'approved' ||
+                data.status === 'completed' ||
+                data.paid === true
+            )) {
                 clearInterval(pollingInterval);
+                if (fallbackTimeout) clearTimeout(fallbackTimeout);
                 window.location.href = 'obrigado.html';
             }
         } catch (e) {
-            // console.error("Polling Error:", e);
+            // console.warn("Polling Check Failed:", e);
         }
-    }, 5000);
+    }, 4000);
 }
