@@ -1050,21 +1050,21 @@
 
             updateCheckoutTotal();
 
-            // Auto-pause VSL when checkout opens (Robust Version)
-            // Tries to pause ALL iframes to be safe (Panda/YouTube/Vimeo compatible)
+            // Auto-pause VSL when checkout opens (Panda Video Specific)
+            const pandaIframe = document.getElementById('panda-51c6d01c-9e9d-44cf-b98b-8041047fef5f');
+            if (pandaIframe) {
+                // Official Panda Video API Syntax
+                pandaIframe.contentWindow.postMessage({ type: 'pause' }, '*');
+            }
+
+            // Fallback for other players (just in case)
             const iframes = document.querySelectorAll('iframe');
             iframes.forEach(iframe => {
-                try {
-                    // Method 1: Panda Video / Standard
-                    iframe.contentWindow.postMessage({ message: 'pause' }, '*');
-
-                    // Method 2: Stringified (required by some players)
-                    iframe.contentWindow.postMessage('{"message": "pause"}', '*');
-
-                    // Method 3: Youtube/Vimeo style
-                    iframe.contentWindow.postMessage(JSON.stringify({ event: 'command', func: 'pauseVideo' }), '*');
-                } catch (e) {
-                    console.log("Auto-pause attempt:", e);
+                if (iframe !== pandaIframe) {
+                    try {
+                        iframe.contentWindow.postMessage('{"message": "pause"}', '*');
+                        iframe.contentWindow.postMessage({ message: 'pause' }, '*');
+                    } catch (e) { }
                 }
             });
         }
