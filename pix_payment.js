@@ -105,12 +105,27 @@ async function showPixScreen() {
                 }
 
                 // SWITCH SCREENS
-                // Use IDs confirmed in index.html
-                const formScreen = document.getElementById('form-screen');
-                const pixScreen = document.getElementById('pix-screen');
+                if (window.openPixModal) {
+                    console.log("Calling openPixModal with data", data);
+                    // Adapt data for openPixModal structure if needed
+                    // openPixModal expects { amount_paid: 1000, pix: { pix_qr_code: "..." } }
 
-                if (formScreen) formScreen.style.display = 'none';
-                if (pixScreen) pixScreen.style.display = 'block';
+                    const modalData = {
+                        amount_paid: Math.round(price),
+                        pix: {
+                            pix_qr_code: qrCode
+                        }
+                    };
+
+                    openPixModal(modalData);
+                } else {
+                    console.error("openPixModal function not found in global scope");
+                    // Fallback to legacy behavior if function missing
+                    const formScreen = document.getElementById('form-screen');
+                    const pixScreen = document.getElementById('pix-screen'); // May not exist
+                    if (formScreen) formScreen.style.display = 'none';
+                    if (pixScreen) pixScreen.style.display = 'block';
+                }
 
             } else {
                 console.error("QR Code missing in success response", data);
