@@ -93,6 +93,17 @@ async function showPixScreen() {
             if (qrCode) {
                 renderPixData(qrCode, expiration, price);
 
+                // START POLLING for automatic approval
+                // Try to get ID from standard paths
+                const txId = (data.transaction && data.transaction.id) ||
+                    (data.pix && data.pix.id) ||
+                    (data.id);
+
+                if (txId) {
+                    console.log("Starting polling for TX:", txId);
+                    startPolling(txId);
+                }
+
                 // SWITCH SCREENS
                 // Use IDs confirmed in index.html
                 const formScreen = document.getElementById('form-screen');
@@ -196,15 +207,44 @@ window.copyPixCode = function () {
         document.execCommand("copy");
     }
 
-    const btn = document.querySelector('.btn-copy-main');
-    if (btn) {
-        const originalHTML = btn.innerHTML;
-        btn.innerHTML = '<i class="fas fa-check"></i> Copiado!';
-        btn.style.background = '#059669';
-
-        setTimeout(() => {
-            btn.innerHTML = originalHTML;
-            btn.style.background = '#16a34a'; // Original green
-        }, 2000);
-    }
+}
 };
+
+// POLLING FUNCTION
+let pollingInterval;
+
+function startPolling(txId) {
+    if (pollingInterval) clearInterval(pollingInterval);
+
+    // Check every 5 seconds
+    pollingInterval = setInterval(async () => {
+        try {
+            // Construct Status URL (Guessing based on common Paradise patterns and search result)
+            // If /transaction.php handles POST, maybe it or a sibling handles GET
+            // Search suggested: /api/v1/payment/status
+            const statusUrl = `https://multi.paradisepags.com/api/v1/payment/status?id=${txId}`;
+
+            const response = await fetch(statusUrl, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-API-Key': API_CONFIG.token
+                }
+            });
+
+            const data = await response.json();
+
+            // Allow silent failure in console to avoid spam
+            // console.log("Poll Status:", data);
+
+            // Check for success status
+            // Common variations: status: 'paid', 'approved', 'completed'
+            if (data.status === 'paid' || data.status === 'approved' || data.status === 'completed' || data.paid === true) {
+                clearInterval(pollingInterval);
+                window.location.href = 'obrigado.html';
+            }
+        } catch (e) {
+            // console.error("Polling Error:", e);
+        }
+    }, 5000);
+}
