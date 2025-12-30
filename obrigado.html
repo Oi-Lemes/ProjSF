@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parabéns! - Compra Confirmada</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+    <style>
+        body {
+            background-color: #fcfdfa;
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
+
+        .thank-you-hero {
+            background: radial-gradient(circle at center, #1a2e1a 0%, #0f1c0f 100%);
+            color: #fff;
+            padding: 40px 20px;
+            text-align: center;
+            border-bottom: 5px solid #CA8A04;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .check-icon-circle {
+            background: #16a34a;
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 40px;
+            color: white;
+            margin: 0 auto 25px;
+            box-shadow: 0 0 0 10px rgba(22, 163, 74, 0.2);
+            animation: popIn 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .thank-title {
+            font-size: 2.2rem;
+            font-weight: 800;
+            margin-bottom: 10px;
+            line-height: 1.1;
+            color: #f0fdf4;
+            max-width: 800px;
+        }
+
+        .thank-subtitle {
+            font-size: 1.1rem;
+            color: #dcfce7;
+            max-width: 600px;
+            margin: 0 auto 30px;
+            line-height: 1.5;
+            opacity: 0.9;
+        }
+
+        .info-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 25px;
+            border-radius: 20px;
+            max-width: 450px;
+            width: 100%;
+            margin-bottom: 30px;
+            text-align: left;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .info-item {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+            align-items: center;
+        }
+
+        .info-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .info-icon {
+            background: #CA8A04;
+            color: #1a2e1a;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            font-size: 20px;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .info-text h4 {
+            color: #EAB308;
+            margin: 0 0 2px;
+            font-size: 1.05rem;
+            font-weight: 700;
+        }
+
+        .info-text p {
+            color: #cbd5e1;
+            font-size: 0.9rem;
+            margin: 0;
+            line-height: 1.4;
+        }
+
+        .btn-whatsapp {
+            background: #25D366;
+            color: white;
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-weight: 700;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .btn-whatsapp:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
+            background: #22c35e;
+        }
+
+        @keyframes popIn {
+            0% {
+                transform: scale(0);
+                opacity: 0;
+            }
+
+            80% {
+                transform: scale(1.1);
+                opacity: 1;
+            }
+
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        /* Mobile adjustments */
+        @media (max-width: 600px) {
+            .thank-title {
+                font-size: 1.8rem;
+            }
+
+            .thank-hero {
+                padding: 30px 15px;
+            }
+
+            .info-card {
+                padding: 20px;
+            }
+
+            .check-icon-circle {
+                width: 80px;
+                height: 80px;
+                font-size: 35px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <section class="thank-you-hero">
+        <div class="check-icon-circle">
+            <i class="fas fa-check"></i>
+        </div>
+
+        <h1 class="thank-title">Parabéns! Sua vaga foi garantida.</h1>
+        <p class="thank-subtitle">Você tomou uma decisão incrível pela sua saúde natural.</p>
+
+        <div class="info-card">
+            <!-- Email Item with Envelope Emoji Icon -->
+            <div class="info-item">
+                <div class="info-icon"><i class="fas fa-envelope"></i></div>
+                <div class="info-text">
+                    <h4>Verifique seu E-mail</h4>
+                    <p>O acesso chega em minutos. Olhe também no <strong>SPAM/Lixo Eletrônico</strong>.</p>
+                </div>
+            </div>
+
+            <!-- Material Item with Leaf/Plant Emoji Icon -->
+            <div class="info-item">
+                <div class="info-icon"><i class="fas fa-leaf"></i></div>
+                <div class="info-text">
+                    <h4>Acesso ao Material</h4>
+                    <p>Todo o conteúdo, bônus e receitas já estão sendo preparados para você.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- WhatsApp Support with specific number -->
+        <a href="https://wa.me/5511920001134?text=Ol%C3%A1%2C%20acabei%20de%20comprar%20e%20preciso%20de%20ajuda!"
+            class="btn-whatsapp">
+            <i class="fab fa-whatsapp"></i> Falar no Suporte (WhatsApp)
+        </a>
+
+        <p style="margin-top: 25px; font-size: 0.85rem; opacity: 0.5;">Precisa de ajuda? (11) 92000-1134</p>
+    </section>
+
+    <script>
+        // Confetti Effect on Load
+        window.addEventListener('load', () => {
+            const duration = 3000;
+            const animationEnd = Date.now() + duration;
+            const defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 0 };
+
+            function random(min, max) {
+                return Math.random() * (max - min) + min;
+            }
+
+            const interval = setInterval(function () {
+                const timeLeft = animationEnd - Date.now();
+
+                if (timeLeft <= 0) {
+                    return clearInterval(interval);
+                }
+
+                const particleCount = 50 * (timeLeft / duration);
+
+                // Since particles fall down, start a bit higher than random
+                confetti(Object.assign({}, defaults, { particleCount, origin: { x: random(0.1, 0.3), y: Math.random() - 0.2 } }));
+                confetti(Object.assign({}, defaults, { particleCount, origin: { x: random(0.7, 0.9), y: Math.random() - 0.2 } }));
+            }, 250);
+
+            // Big burst at start
+            confetti({
+                particleCount: 100,
+                spread: 70,
+                origin: { y: 0.6 }
+            });
+        });
+    </script>
+
+</body>
+
+</html>
