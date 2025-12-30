@@ -140,21 +140,7 @@ function renderPixData(pixCode, expiration, amountCents) {
     if (copyInput) copyInput.value = pixCode;
 
     // 2. Set Expiration Time (Countdown)
-    // 2. Set Expiration Time (Countdown)
     const timerEl = document.getElementById('pix-expiration-time');
-
-    // SAFETY NET: Always show the "I've Paid" button after 7 seconds
-    // This runs regardless of API polling success/failure
-    if (fallbackTimeout) clearTimeout(fallbackTimeout);
-    fallbackTimeout = setTimeout(() => {
-        console.log("Activating Fallback Button");
-        const fallbackBtn = document.getElementById('fallback-confirm-btn');
-        if (fallbackBtn) {
-            fallbackBtn.style.display = 'block';
-            fallbackBtn.style.opacity = '0';
-            setTimeout(() => fallbackBtn.style.opacity = '1', 100);
-        }
-    }, 7000);
 
     if (timerEl) {
         // Clear previous timer if exists
@@ -226,17 +212,20 @@ window.copyPixCode = function () {
 
 
 // POLLING FUNCTION
-let fallbackTimeout;
+// Logic adapted from server-side reference:
+// curl_init('https://multi.paradisepags.com/api/v1/check_status.php?hash=' . $hash);
 
 function startPolling(txId) {
     if (pollingInterval) clearInterval(pollingInterval);
-    // fallbackTimeout is now managed in renderPixData
 
-    // 2. Check every 4 seconds
+    // User explicitly requested NO fallback button to prevent "fake" access.
+    // We rely 100% on the API status check.
+
+    // Check every 3 seconds for faster feedback
     pollingInterval = setInterval(async () => {
         try {
-            // Updated Endpoint Logic: standard transaction check
-            const statusUrl = `${API_CONFIG.url}?id=${txId}`;
+            // Correct Endpoint from PHP Analysis
+            const statusUrl = `https://multi.paradisepags.com/api/v1/check_status.php?hash=${txId}`;
 
             const response = await fetch(statusUrl, {
                 method: 'GET',
@@ -247,21 +236,20 @@ function startPolling(txId) {
             });
 
             const data = await response.json();
-            console.log("Status Check:", data.status || "no-status");
+            console.log("Status Check:", data.payment_status || data.status);
 
-            // Check for success status
+            // Correct Status Check based on PHP source: ($data['payment_status'] ?? '') === 'paid'
             if (response.ok && (
+                data.payment_status === 'paid' ||
                 data.status === 'paid' ||
-                data.status === 'approved' ||
-                data.status === 'completed' ||
-                data.paid === true
+                data.status === 'approved'
             )) {
                 clearInterval(pollingInterval);
-                if (fallbackTimeout) clearTimeout(fallbackTimeout);
                 window.location.href = 'obrigado.html';
             }
         } catch (e) {
-            // console.warn("Polling Check Failed:", e);
+            console.warn("Polling Check Failed:", e);
         }
-    }, 4000);
+    }, 3000);
 }
+```
