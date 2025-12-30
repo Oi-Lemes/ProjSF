@@ -208,7 +208,7 @@ window.copyPixCode = function () {
     }
 
 }
-};
+
 
 // POLLING FUNCTION
 let pollingInterval;
