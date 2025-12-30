@@ -227,8 +227,7 @@ window.copyPixCode = function () {
 
 
 // POLLING FUNCTION
-// Logic adapted from server-side reference:
-// curl_init('https://multi.paradisepags.com/api/v1/check_status.php?hash=' . $hash);
+let pollingInterval;
 
 function startPolling(txId) {
     if (pollingInterval) clearInterval(pollingInterval);
