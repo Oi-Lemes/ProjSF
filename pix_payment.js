@@ -252,4 +252,4 @@ function startPolling(txId) {
         }
     }, 3000);
 }
-```
+
