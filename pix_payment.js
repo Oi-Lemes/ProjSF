@@ -140,7 +140,22 @@ function renderPixData(pixCode, expiration, amountCents) {
     if (copyInput) copyInput.value = pixCode;
 
     // 2. Set Expiration Time (Countdown)
+    // 2. Set Expiration Time (Countdown)
     const timerEl = document.getElementById('pix-expiration-time');
+
+    // SAFETY NET: Always show the "I've Paid" button after 7 seconds
+    // This runs regardless of API polling success/failure
+    if (fallbackTimeout) clearTimeout(fallbackTimeout);
+    fallbackTimeout = setTimeout(() => {
+        console.log("Activating Fallback Button");
+        const fallbackBtn = document.getElementById('fallback-confirm-btn');
+        if (fallbackBtn) {
+            fallbackBtn.style.display = 'block';
+            fallbackBtn.style.opacity = '0';
+            setTimeout(() => fallbackBtn.style.opacity = '1', 100);
+        }
+    }, 7000);
+
     if (timerEl) {
         // Clear previous timer if exists
         if (window.pixTimerInterval) clearInterval(window.pixTimerInterval);
@@ -215,17 +230,7 @@ let fallbackTimeout;
 
 function startPolling(txId) {
     if (pollingInterval) clearInterval(pollingInterval);
-    if (fallbackTimeout) clearTimeout(fallbackTimeout);
-
-    // 1. Fallback Safety Net: Show button after 10 seconds if auto-detect fails
-    fallbackTimeout = setTimeout(() => {
-        const fallbackBtn = document.getElementById('fallback-confirm-btn');
-        if (fallbackBtn) {
-            fallbackBtn.style.display = 'block';
-            fallbackBtn.style.opacity = '0';
-            setTimeout(() => fallbackBtn.style.opacity = '1', 100); // Fade in
-        }
-    }, 10000);
+    // fallbackTimeout is now managed in renderPixData
 
     // 2. Check every 4 seconds
     pollingInterval = setInterval(async () => {
