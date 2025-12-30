@@ -1049,6 +1049,12 @@
             });
 
             updateCheckoutTotal();
+
+            // Auto-pause VSL when checkout opens
+            const vslIframe = document.getElementById('panda-51c6d01c-9e9d-44cf-b98b-8041047fef5f');
+            if (vslIframe) {
+                vslIframe.contentWindow.postMessage({ message: 'pause' }, '*');
+            }
         }
 
         function closeCheckoutModal() {
