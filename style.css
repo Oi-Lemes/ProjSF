@@ -211,23 +211,31 @@ body {
 
     .hero-title::before,
     .hero-title::after {
-        font-size: 2.2rem;
-        /* Smaller to force fit */
-        opacity: 0.75;
+        font-size: 2rem;
+        /* Reduced to safer size */
+        opacity: 0.95;
+        /* Maximized visibility per "apagadas" feedback */
+        top: auto;
+        bottom: auto;
+        left: auto;
+        right: auto;
+        /* Reset defaults */
     }
 
-    /* Move Top Leaf Inward (Safe Zone) */
+    /* Move Top Leaf Inward (Guaranteed Safe Zone) */
     .hero-title::before {
         top: -45px;
-        left: 0px;
-        /* Was -10px, moved to 0 to avoid cut-off */
+        left: 15px;
+        /* Moved 15px INSIDE the screen edge */
+        transform: rotate(-30deg);
     }
 
-    /* Move Bottom Leaf Inward (Safe Zone) */
+    /* Move Bottom Leaf Inward (Guaranteed Safe Zone) */
     .hero-title::after {
         bottom: -30px;
-        right: 0px;
-        /* Was -10px, moved to 0 to avoid cut-off */
+        right: 15px;
+        /* Moved 15px INSIDE the screen edge */
+        transform: rotate(30deg);
     }
 }
 
