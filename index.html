@@ -19,8 +19,21 @@
 <body>
     <!-- Topo com aviso de urgência -->
     <div class="urgency-banner">
-        <div class="container">
-            <h2 class="urgency-text">DESCONTO SÓ HOJE <span id="current-date" class="date-highlight"></span></h2>
+        <div class="marquee-container">
+            <!-- Duplicated content for seamless loop -->
+            <div class="marquee-content">
+                <h2 class="urgency-text">DESCONTO SÓ HOJE <span class="current-date-span"></span></h2>
+                <h2 class="urgency-text">DESCONTO SÓ HOJE <span class="current-date-span"></span></h2>
+                <h2 class="urgency-text">DESCONTO SÓ HOJE <span class="current-date-span"></span></h2>
+                <h2 class="urgency-text">DESCONTO SÓ HOJE <span class="current-date-span"></span></h2>
+            </div>
+            <!-- Second set for infinity illusion -->
+            <div class="marquee-content">
+                <h2 class="urgency-text">DESCONTO SÓ HOJE <span class="current-date-span"></span></h2>
+                <h2 class="urgency-text">DESCONTO SÓ HOJE <span class="current-date-span"></span></h2>
+                <h2 class="urgency-text">DESCONTO SÓ HOJE <span class="current-date-span"></span></h2>
+                <h2 class="urgency-text">DESCONTO SÓ HOJE <span class="current-date-span"></span></h2>
+            </div>
         </div>
     </div>
     <script>
@@ -29,7 +42,14 @@
             var day = d.getDate().toString().padStart(2, '0');
             var month = (d.getMonth() + 1).toString().padStart(2, '0');
             var year = d.getFullYear();
-            document.getElementById('current-date').textContent = day + '/' + month + '/' + year;
+            var dateStr = day + '/' + month + '/' + year;
+
+            // Update all spans in the marquee
+            var spans = document.querySelectorAll('.current-date-span, #current-date');
+            spans.forEach(function (span) {
+                span.textContent = dateStr;
+                span.classList.add('date-highlight'); // Ensure styling
+            });
         })();
     </script>
 

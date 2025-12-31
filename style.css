@@ -211,21 +211,99 @@ body {
 
     .hero-title::before,
     .hero-title::after {
-        font-size: 2.4rem;
-        /* Slightly smaller to avoid overlap */
+        font-size: 2.2rem;
+        /* Smaller to force fit */
         opacity: 0.75;
     }
 
-    /* Move Top Leaf Up and Left */
+    /* Move Top Leaf Inward (Safe Zone) */
     .hero-title::before {
-        top: -50px;
-        left: -10px;
+        top: -45px;
+        left: 0px;
+        /* Was -10px, moved to 0 to avoid cut-off */
     }
 
-    /* Move Bottom Leaf Down and Right */
+    /* Move Bottom Leaf Inward (Safe Zone) */
     .hero-title::after {
-        bottom: -35px;
-        right: -10px;
+        bottom: -30px;
+        right: 0px;
+        /* Was -10px, moved to 0 to avoid cut-off */
+    }
+}
+
+/* Marquee Animation for Urgency Banner */
+.urgency-banner {
+    overflow: hidden;
+    white-space: nowrap;
+    position: relative;
+    padding: 12px 0;
+    /* consistent padding */
+}
+
+.urgency-track {
+    display: inline-block;
+    white-space: nowrap;
+    animation: marquee 15s linear infinite;
+}
+
+.urgency-text {
+    display: inline-block;
+    padding-left: 100%;
+    /* Start from right */
+    margin: 0;
+}
+
+@keyframes marquee {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+/* Override existing container/text styles for banner if needed to allow full width flow */
+.urgency-banner .container {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 0 !important;
+    overflow: hidden;
+}
+
+.urgency-banner .urgency-text {
+    /* Resetting generic h2 styles if they interfere */
+    width: auto;
+    font-size: 16px;
+    /* Adjust as needed */
+    padding-left: 0;
+    /* handled by track */
+}
+
+/* New Marquee Logic: Duplicate content in HTML is best, but CSS only approach: */
+.marquee-container {
+    display: flex;
+    overflow: hidden;
+    user-select: none;
+    gap: 20px;
+}
+
+.marquee-content {
+    flex-shrink: 0;
+    display: flex;
+    gap: 20px;
+    min-width: 100%;
+    justify-content: space-around;
+    animation: scroll 20s linear infinite;
+}
+
+@keyframes scroll {
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(-100%);
     }
 }
 
