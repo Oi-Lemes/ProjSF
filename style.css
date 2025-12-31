@@ -210,22 +210,28 @@ body {
 @media (max-width: 768px) {
     .hero-title {
         position: relative;
-        padding: 0 15px;
-        /* More breathing room inside safe zone */
+        padding: 10px 20px;
+        /* Increased padding to push leaves out */
         z-index: 10;
-        /* Ensure text is above leaves */
+        display: inline-block;
+        /* Attempt to shrink-wrap text if not full width */
+        width: 100%;
+        /* Ensure centered alignment context */
+        box-sizing: border-box;
     }
 
-    /* Common styles for all leaves to ensure they are behind and visible */
+    /* Common styles for all leaves */
     .hero-title::before,
     .hero-title::after,
     .extra-leaf {
-        opacity: 0.95;
+        opacity: 1;
+        /* Full visibility as requested */
         z-index: -1 !important;
-        /* STRICTLY BEHIND TEXT */
         color: var(--accent-amber);
         position: absolute;
         pointer-events: none;
+        font-size: 1.6rem;
+        /* Balanced size */
     }
 
     /* --- 1. Top Left (Pseudo) --- */
@@ -233,61 +239,46 @@ body {
         content: '\f06c';
         font-family: 'Font Awesome 5 Free';
         font-weight: 900;
-        font-size: 1.8rem;
         top: -15px;
-        left: 0;
-        transform: rotate(-30deg);
+        /* Clear of top text */
+        left: 5px;
+        /* Safe from edge */
+        transform: rotate(-45deg);
     }
 
-    /* --- 2. Bottom Right (Pseudo) --- */
+    /* --- 2. Top Right (Extra) --- */
+    .extra-leaf.top-right {
+        top: -15px;
+        /* Clear of top text */
+        right: 5px;
+        /* Safe from edge */
+        transform: rotate(45deg);
+    }
+
+    /* --- 3. Bottom Left (Extra) --- */
+    .extra-leaf.bottom-left {
+        bottom: -15px;
+        /* Clear of bottom text */
+        left: 5px;
+        /* Safe from edge */
+        transform: rotate(-135deg);
+        /* Pointing outwards */
+    }
+
+    /* --- 4. Bottom Right (Pseudo) --- */
     .hero-title::after {
         content: '\f06c';
         font-family: 'Font Awesome 5 Free';
         font-weight: 900;
-        font-size: 1.8rem;
-        bottom: -5px;
-        right: 0;
-        transform: rotate(30deg);
-    }
-
-    /* --- Extra Leaves Styling --- */
-    .extra-leaf {
-        font-size: 1.5rem;
-    }
-
-    /* --- 3. Top Right --- */
-    .extra-leaf.top-right {
-        top: -20px;
+        bottom: -15px;
+        /* Clear of bottom text */
         right: 5px;
-        transform: rotate(45deg);
+        /* Safe from edge */
+        transform: rotate(135deg);
+        /* Pointing outwards */
     }
 
-    /* --- 4. Bottom Left --- */
-    .extra-leaf.bottom-left {
-        bottom: -5px;
-        left: 5px;
-        transform: rotate(-45deg);
-    }
-
-    /* --- 5. Middle Right (New) --- */
-    .extra-leaf.middle-right {
-        top: 50%;
-        right: -5px;
-        /* Slightly out but safe due to padding */
-        transform: translateY(-50%) rotate(90deg);
-        font-size: 1.2rem;
-        /* Smaller accent */
-    }
-
-    /* --- 6. Middle Left (New) --- */
-    .extra-leaf.middle-left {
-        top: 50%;
-        left: -5px;
-        /* Slightly out but safe due to padding */
-        transform: translateY(-50%) rotate(-90deg);
-        font-size: 1.2rem;
-        /* Smaller accent */
-    }
+    /* Remove Middle styles since elements deleted */
 }
 
 /* Hide extra leaves on desktop */
