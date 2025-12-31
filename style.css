@@ -213,8 +213,8 @@ body {
     .hero-title::after {
         font-size: 2.8rem;
         /* Slightly larger mobile icons */
-        opacity: 0.4;
-        /* Stronger mobile opacity */
+        opacity: 0.75;
+        /* Stronger mobile opacity to fix "superapagada" issue */
     }
 }
 
