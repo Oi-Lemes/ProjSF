@@ -211,10 +211,21 @@ body {
 
     .hero-title::before,
     .hero-title::after {
-        font-size: 2.8rem;
-        /* Slightly larger mobile icons */
+        font-size: 2.4rem;
+        /* Slightly smaller to avoid overlap */
         opacity: 0.75;
-        /* Stronger mobile opacity to fix "superapagada" issue */
+    }
+
+    /* Move Top Leaf Up and Left */
+    .hero-title::before {
+        top: -50px;
+        left: -10px;
+    }
+
+    /* Move Bottom Leaf Down and Right */
+    .hero-title::after {
+        bottom: -35px;
+        right: -10px;
     }
 }
 
