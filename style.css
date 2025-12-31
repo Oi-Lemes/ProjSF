@@ -208,34 +208,65 @@ body {
 }
 
 @media (max-width: 768px) {
-
-    .hero-title::before,
-    .hero-title::after {
-        font-size: 2rem;
-        /* Reduced to safer size */
-        opacity: 0.95;
-        /* Maximized visibility per "apagadas" feedback */
-        top: auto;
-        bottom: auto;
-        left: auto;
-        right: auto;
-        /* Reset defaults */
+    .hero-title {
+        position: relative;
+        /* Ensure containment */
+        padding: 0 10px;
+        /* Add breathing room for text if needed */
     }
 
-    /* Move Top Leaf Inward (Guaranteed Safe Zone) */
+    /* Original Leaves (Pseudo-elements) -> Top Left & Bottom Right */
+    .hero-title::before,
+    .hero-title::after {
+        font-size: 1.8rem;
+        /* Optimized size for cluster */
+        opacity: 0.95;
+    }
+
     .hero-title::before {
-        top: -45px;
-        left: 15px;
-        /* Moved 15px INSIDE the screen edge */
+        top: -10px;
+        /* Tight to text top */
+        left: 0;
+        /* Align with text start */
         transform: rotate(-30deg);
     }
 
-    /* Move Bottom Leaf Inward (Guaranteed Safe Zone) */
     .hero-title::after {
-        bottom: -30px;
-        right: 15px;
-        /* Moved 15px INSIDE the screen edge */
+        bottom: -5px;
+        /* Tight to text bottom */
+        right: 0;
+        /* Align with text end */
         transform: rotate(30deg);
+    }
+
+    /* Extra Leaves -> Top Right & Bottom Left */
+    .extra-leaf {
+        position: absolute;
+        color: var(--accent-amber);
+        opacity: 0.95;
+        font-size: 1.5rem;
+        /* Slightly smaller variations */
+        z-index: -1;
+    }
+
+    .extra-leaf.top-right {
+        top: -15px;
+        right: 10px;
+        transform: rotate(45deg);
+    }
+
+    .extra-leaf.bottom-left {
+        bottom: -5px;
+        left: 10px;
+        transform: rotate(-45deg);
+    }
+}
+
+/* Hide extra leaves on desktop if not needed, or style them there too */
+@media (min-width: 769px) {
+    .extra-leaf {
+        display: none;
+        /* Keep original clean desktop design */
     }
 }
 
