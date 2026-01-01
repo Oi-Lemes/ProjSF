@@ -530,6 +530,37 @@ function startNotificationSystem() {
 }
 
 
+
+// Timer do Pop-up (5 minutos)
+let popupTimerInterval;
+function startPopupTimer() {
+    const timerDisplay = document.getElementById('popup-countdown');
+    if (!timerDisplay) return;
+
+    // Se já estiver rodando, reinicia? Ou mantém?
+    // Vamos reiniciar para 5 min sempre que abrir para dar a sensação de urgência real da sessão
+    if (popupTimerInterval) clearInterval(popupTimerInterval);
+
+    let duration = 5 * 60; // 5 minutos em segundos
+
+    function updateDisplay() {
+        const minutes = Math.floor(duration / 60);
+        const seconds = duration % 60;
+
+        timerDisplay.textContent =
+            `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+
+        if (--duration < 0) {
+            clearInterval(popupTimerInterval);
+            timerDisplay.textContent = "00:00";
+            // Opcional: Fechar popup ou mudar texto
+        }
+    }
+
+    updateDisplay(); // Atualiza imediatamente
+    popupTimerInterval = setInterval(updateDisplay, 1000);
+}
+
 // Funções do Pop-up de Upgrade
 function showUpgradePopup(event) {
     if (typeof isCheckoutOpen !== 'undefined' && isCheckoutOpen) return;
