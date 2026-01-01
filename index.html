@@ -1056,12 +1056,46 @@
             if (plan === 'premium') {
                 currentPlanPrice = 37.00;
                 document.getElementById('modal-title').innerText = 'Checkout Premium';
+                // Premium Features List
+                featuresHTML = `
+                    <div style="background: #f0fff4; padding: 15px; border-radius: 12px; border: 1px solid #bbf7d0;">
+                        <h4 style="color: #15803d; margin-bottom: 10px; font-size: 14px; font-weight: 700;">Você está levando:</h4>
+                        <ul style="list-style: none; padding: 0; margin: 0; font-size: 13px; color: #166534;">
+                            <li style="margin-bottom: 6px;"><i class="fas fa-check-circle" style="color: #16a34a; margin-right: 6px;"></i> Curso em Vídeo Completo</li>
+                            <li style="margin-bottom: 6px;"><i class="fas fa-check-circle" style="color: #16a34a; margin-right: 6px;"></i> App de Plantas & Receitas</li>
+                            <li style="margin-bottom: 6px;"><i class="fas fa-check-circle" style="color: #16a34a; margin-right: 6px;"></i> Acesso Vitalício + Atualizações</li>
+                            <li style="margin-bottom: 6px;"><i class="fas fa-gift" style="color: #CA8A04; margin-right: 6px;"></i> 4 Bônus Exclusivos</li>
+                        </ul>
+                    </div>`;
+
             } else if (plan === 'premium_discount') {
                 currentPlanPrice = 27.00;
                 document.getElementById('modal-title').innerText = 'Oferta Especial Premium';
+                // Same as Premium (Visual Only - Backend delivers Basic)
+                featuresHTML = `
+                    <div style="background: #f0fff4; padding: 15px; border-radius: 12px; border: 1px solid #bbf7d0;">
+                        <h4 style="color: #15803d; margin-bottom: 10px; font-size: 14px; font-weight: 700;">Você está levando:</h4>
+                        <ul style="list-style: none; padding: 0; margin: 0; font-size: 13px; color: #166534;">
+                             <li style="margin-bottom: 6px;"><i class="fas fa-check-circle" style="color: #16a34a; margin-right: 6px;"></i> Curso em Vídeo Completo</li>
+                            <li style="margin-bottom: 6px;"><i class="fas fa-check-circle" style="color: #16a34a; margin-right: 6px;"></i> App de Plantas & Receitas</li>
+                            <li style="margin-bottom: 6px;"><i class="fas fa-check-circle" style="color: #16a34a; margin-right: 6px;"></i> Acesso Vitalício + Atualizações</li>
+                            <li style="margin-bottom: 6px;"><i class="fas fa-gift" style="color: #CA8A04; margin-right: 6px;"></i> 4 Bônus Exclusivos</li>
+                        </ul>
+                    </div>`;
             } else {
                 currentPlanPrice = 10.00;
                 document.getElementById('modal-title').innerText = 'Checkout Básico';
+                // Basic Features List (With Exclusions)
+                featuresHTML = `
+                    <div style="background: #f8fafc; padding: 15px; border-radius: 12px; border: 1px solid #e2e8f0;">
+                         <h4 style="color: #334155; margin-bottom: 10px; font-size: 14px; font-weight: 700;">Detalhes do Plano Básico:</h4>
+                         <ul style="list-style: none; padding: 0; margin: 0; font-size: 13px; color: #475569;">
+                            <li style="margin-bottom: 6px;"><i class="fas fa-check-circle" style="color: #16a34a; margin-right: 6px;"></i> Acesso ao App de Plantas</li>
+                            <li style="margin-bottom: 6px;"><i class="fas fa-check-circle" style="color: #16a34a; margin-right: 6px;"></i> Acesso Digital Vitalício</li>
+                            <li style="margin-bottom: 6px; opacity: 0.7; color: #ef4444;"><i class="fas fa-times-circle" style="margin-right: 6px;"></i> Organizado por Sintomas</li>
+                            <li style="margin-bottom: 6px; opacity: 0.7; color: #ef4444;"><i class="fas fa-times-circle" style="margin-right: 6px;"></i> Cursos em Vídeos</li>
+                         </ul>
+                    </div>`;
             }
 
             document.getElementById('main-item-price').innerText = formatMoney(currentPlanPrice);
